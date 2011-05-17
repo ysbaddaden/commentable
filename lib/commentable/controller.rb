@@ -13,7 +13,7 @@ module Commentable
     end
 
     def new
-      @comment = @commentable.comments.build
+      @comment = build_comment
       respond_with(@commentable, @comment)
     end
 
@@ -22,9 +22,10 @@ module Commentable
     end
 
     def create
-      @comment = @commentable.comments.build(params[:comment])
+      @comment = build_comment(params[:comment])
       @comment.save
-      respond_with(@commentable, @comment, :location => { :action => "show", :id => @comment.to_param })
+      respond_with(@commentable, @comment,
+        :location => { :action => "show", :id => @comment.to_param })
     end
 
     def update
@@ -37,6 +38,10 @@ module Commentable
       @comment = @commentable.comments.find(params[:id])
       @comment.destroy
       respond_with(@commentable, @comment, :location => @commentable)
+    end
+
+    def build_comment(params = nil)
+      @commentable.comments.build(params)
     end
 
     def load_commentable

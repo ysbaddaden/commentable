@@ -1,5 +1,3 @@
-<%# TODO: remote submission with javascript callback %>
-
 <%= form_for comment, :url => url do |f| %>
   <div class="column left">
     <div class="field">
@@ -26,7 +24,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t(:submit_btn, :scope => [:calliope, :comments, action_name == 'edit' ? 'edit' : 'new']),
+    <%= f.submit t(:submit_btn, :scope => [:commentable, action_name == 'edit' ? 'edit' : 'new']),
       :class => 'default' %>
   </div>
 <% end %>

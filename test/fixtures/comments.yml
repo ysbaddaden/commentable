@@ -1,0 +1,23 @@
+post_one_1:
+  commentable: one (Post)
+  user_name: "nobody"
+  body: "just a comment"
+
+post_one_2:
+  commentable: one (Post)
+  user_name: "anonymous"
+  user_email: "anonymous@example.com"
+  body: "just another comment"
+
+post_two_1:
+  commentable: two (Post)
+  user_name: "yac"
+  user_url: "yac@example.com"
+  body: "yet another comment"
+
+post_three_1:
+  commentable: three (Post)
+  user_name: "yac"
+  user_url: "yac@example.com"
+  body: "yet another comment"
+

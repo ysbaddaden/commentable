@@ -1,5 +1,11 @@
 RailsApp::Application.routes.draw do
-  calliope :blog, :news
+  resources :posts, :only => [:show, :index] do
+    resources :comments
+  end
+  
+  resources :pages, :only => [:show, :index] do
+    resources :comments
+  end
   
   root :to => "home#index"
 end
