@@ -1,6 +1,13 @@
-<%= content_tag :article, :class => 'comment', :id => "C#{comment.id}" do %>
-  <h3><%= link_to_if comment.user_url?, comment.user_name, comment.user_url %></h3>
+<%= content_tag :article, :class => 'comment', :id => "C#{comment.to_param}" do %>
+  <h3>
+    <% if comment.user_name? %>
+      <%= link_to_if comment.user_url?, comment.user_name, comment.user_url %>
+    <% else %>
+      <%= t('comments.comment.anonymous_user') %>
+    <% end %>
+  </h3>
+  
   <div class="body">
-    <%= auto_link simple_format(comment.body), :html => { :rel => 'nofollow' } %>
+    <%= auto_link(simple_format(comment.body), :html => { :rel => 'nofollow' }) %>
   </div>
 <% end %>

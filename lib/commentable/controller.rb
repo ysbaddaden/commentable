@@ -3,7 +3,7 @@ module Commentable
     before_filter :load_commentable
 
     def index
-      @comment = @commentable.comments.all
+      @comments = @commentable.comments.all
       respond_with(@commentable, @comments)
     end
 
@@ -24,14 +24,23 @@ module Commentable
     def create
       @comment = build_comment(params[:comment])
       @comment.save
-      respond_with(@commentable, @comment,
-        :location => { :action => "show", :id => @comment.to_param })
+      
+      respond_with(@commentable, @comment) do |format|
+        format.html do
+          if @comment.persisted?
+            redirect_to polymorphic_url(@commentable, :anchor => "C#{@comment.to_param}")
+          else
+            render 'new'
+          end
+        end
+      end
     end
 
     def update
       @comment = @commentable.comments.find(params[:id])
       @comment.update_attributes(params[:comment])
-      respond_with(@commentable, @comment, :location => { :action => "show" })
+      respond_with(@commentable, @comment, :location =>
+        polymorphic_url(@commentable, :anchor => "C#{@comment.to_param}"))
     end
 
     def destroy
@@ -41,7 +50,9 @@ module Commentable
     end
 
     def build_comment(params = nil)
-      @commentable.comments.build(params)
+      comment = @commentable.comments.build(params)
+      comment.user_ip = request.remote_ip if comment.respond_to?(:user_ip)
+      comment
     end
 
     def load_commentable

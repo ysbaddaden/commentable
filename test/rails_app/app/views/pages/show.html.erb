@@ -1,0 +1,6 @@
+<h1><%= @page.title %></h1>
+
+<div class="comments">
+  <%= render :partial => 'comments/comment', :collection => @page.comments %>
+  <%= render 'comments/form', :commentable => 'page' %>
+</div>

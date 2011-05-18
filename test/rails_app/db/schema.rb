@@ -19,11 +19,13 @@ ActiveRecord::Schema.define(:version => 20110517071954) do
     t.string   "user_name"
     t.string   "user_email"
     t.string   "user_url"
+    t.string   "user_ip",          :limit => 15
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["user_ip"], :name => "index_comments_on_user_ip"
 
   create_table "pages", :force => true do |t|
     t.string   "title"
