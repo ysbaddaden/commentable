@@ -28,7 +28,7 @@ module Commentable
       respond_with(@commentable, @comment) do |format|
         format.html do
           if @comment.persisted?
-            redirect_to polymorphic_url(@commentable, :anchor => "C#{@comment.to_param}")
+            redirect_to comment_url
           else
             render 'new'
           end
@@ -39,14 +39,21 @@ module Commentable
     def update
       @comment = @commentable.comments.find(params[:id])
       @comment.update_attributes(params[:comment])
-      respond_with(@commentable, @comment, :location =>
-        polymorphic_url(@commentable, :anchor => "C#{@comment.to_param}"))
+      respond_with(@commentable, @comment, :location => comment_url)
     end
 
     def destroy
       @comment = @commentable.comments.find(params[:id])
       @comment.destroy
-      respond_with(@commentable, @comment, :location => @commentable)
+      respond_with(@commentable, @comment, :location => commentable_url)
+    end
+
+    def comment_url
+      polymorphic_url(@commentable, :anchor => "C#{@comment.to_param}")
+    end
+
+    def commentable_url
+      @commentable
     end
 
     def build_comment(params = nil)
