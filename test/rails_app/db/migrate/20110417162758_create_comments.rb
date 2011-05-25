@@ -7,9 +7,9 @@ class CreateComments < ActiveRecord::Migration
       t.string     :user_name
       t.string     :user_email
       t.string     :user_url
-      t.string     :user_ip,    :limit => 15
-#      t.boolean    :spam
-#      t.boolean    :troll
+      t.string     :user_ip
+      t.boolean    :spam
+      t.boolean    :troll
       t.timestamps
     end
     

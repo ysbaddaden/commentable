@@ -21,3 +21,15 @@ post_three_1:
   user_url: "yac@example.com"
   body: "yet another comment"
 
+post_one_spam:
+  commentable: one (Post)
+  user_name: "spammer"
+  body: "just a spam"
+  spam: true
+
+post_one_troll:
+  commentable: one (Post)
+  user_name: "troller"
+  body: "just a troll"
+  troll: true
+

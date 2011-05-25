@@ -63,6 +63,34 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not_equal " ", comments(:post_one_1).reload.body
   end
 
+  test "should spam" do
+    assert_difference('Comment.where(:spam => true).count') do
+      put :spam, :post_id => @post.to_param, :commentable => 'post', :id => comments(:post_one_1)
+      assert_redirected_to post_url(@post, :anchor => "C#{comments(:post_one_1).to_param}")
+    end
+  end
+
+  test "should troll" do
+    assert_difference('Comment.where(:troll => true).count') do
+      put :troll, :post_id => @post.to_param, :commentable => 'post', :id => comments(:post_one_1)
+      assert_redirected_to post_url(@post, :anchor => "C#{comments(:post_one_1).to_param}")
+    end
+  end
+
+  test "should unspam" do
+    assert_difference('Comment.where(:spam => true).count', -1) do
+      put :spam, :post_id => @post.to_param, :commentable => 'post', :id => comments(:post_one_spam)
+      assert_redirected_to post_url(@post, :anchor => "C#{comments(:post_one_spam).to_param}")
+    end
+  end
+
+  test "should untroll" do
+    assert_difference('Comment.where(:troll => true).count', -1) do
+      put :troll, :post_id => @post.to_param, :commentable => 'post', :id => comments(:post_one_troll)
+      assert_redirected_to post_url(@post, :anchor => "C#{comments(:post_one_troll).to_param}")
+    end
+  end
+
   test "should destroy" do
     assert_difference('Comment.count', -1) do
       delete :destroy, :post_id => @post.to_param, :commentable => 'post',

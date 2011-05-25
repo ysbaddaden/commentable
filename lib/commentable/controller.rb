@@ -42,6 +42,18 @@ module Commentable
       respond_with(@commentable, @comment, :location => comment_url)
     end
 
+    def spam
+      @comment = @commentable.comments.find(params[:id])
+      @comment.toggle!(:spam)
+      respond_with(@commentable, @comment, :location => comment_url)
+    end
+
+    def troll
+      @comment = @commentable.comments.find(params[:id])
+      @comment.toggle!(:troll)
+      respond_with(@commentable, @comment, :location => comment_url)
+    end
+
     def destroy
       @comment = @commentable.comments.find(params[:id])
       @comment.destroy
