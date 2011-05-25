@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20110517071954) do
     t.string   "user_name"
     t.string   "user_email"
     t.string   "user_url"
-    t.string   "user_ip",          :limit => 15
+    t.string   "user_ip"
     t.boolean  "spam"
     t.boolean  "troll"
     t.datetime "created_at"

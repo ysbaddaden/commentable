@@ -20,31 +20,32 @@ module Commentable
     extend ActiveSupport::Concern
 
     included do
-      cattr_accessor :spam_quota, :troll_quota, :quota_time
-
-      self.spam_quota  = 4
-      self.troll_quota = 4
-      self.quota_time  = 1.day
-
       belongs_to :commentable, :polymorphic => true, :counter_cache => true
-
+      
       validates_presence_of :commentable
       validates_presence_of :body
+      
       validate :spam_quota, :troll_quota
     end
 
     # Adds an error on base if current ip generated too much spams.
     def spam_quota
-      errors[:base] << "spam_quota" if self.class.count_for_user_ip(:spam) >= self.class.spam_quota
+      errors[:base] << "spam_quota" if self.class.count_for_user_ip(user_ip, :spam) >= self.class.spam_quota
     end
 
     # Adds an error on base if current ip generated too much trolls.
     def troll_quota
-      errors[:base] << "troll_quota" if self.class.count_for_user_ip(:troll) >= self.class.troll_quota
+      errors[:base] << "troll_quota" if self.class.count_for_user_ip(user_ip, :troll) >= self.class.troll_quota
     end
 
     module ClassMethods
-      def count_for_user_ip(field)
+      mattr_accessor :spam_quota, :troll_quota, :quota_time
+
+      self.spam_quota  = 4
+      self.troll_quota = 4
+      self.quota_time  = 1.day
+
+      def count_for_user_ip(user_ip, field)
         where("user_ip = ? AND #{field} = ? AND created_at >= ?",
           user_ip, true, Time.now - quota_time).count
       end
