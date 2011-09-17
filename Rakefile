@@ -25,7 +25,7 @@ begin
   Jeweler::Tasks.new do |gem|
     root_files = FileList["README.rdoc"]
     gem.name = "commentable"
-    gem.version = "0.0.1"
+    gem.version = "0.0.2"
     gem.summary = "User comments engine for Ruby on Rails."
     gem.email = "ysbaddaden@gmail.com"
     gem.homepage = "http://github.com/ysbaddaden/commentable"
