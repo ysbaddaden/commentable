@@ -4,18 +4,20 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{commentable}
-  s.version = "0.0.1"
+  s.name = %q{rails_commentable}
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Julien Portalier"]
-  s.date = %q{2011-05-18}
+  s.date = %q{2011-09-17}
   s.description = %q{User comments engine for Ruby on Rails.}
   s.email = %q{ysbaddaden@gmail.com}
   s.files = [
     "lib/commentable.rb",
     "lib/commentable/controller.rb",
-    "lib/commentable/model.rb"
+    "lib/commentable/model.rb",
+    "lib/commentable/routes.rb",
+    "lib/rails_commentable.rb"
   ]
   s.homepage = %q{http://github.com/ysbaddaden/commentable}
   s.require_paths = ["lib"]
@@ -29,6 +31,7 @@ Gem::Specification.new do |s|
     "test/rails_app/app/controllers/pages_controller.rb",
     "test/rails_app/app/controllers/posts_controller.rb",
     "test/rails_app/app/helpers/application_helper.rb",
+    "test/rails_app/app/models/comment.rb",
     "test/rails_app/app/models/page.rb",
     "test/rails_app/app/models/post.rb",
     "test/rails_app/config/application.rb",
