@@ -1,1 +1,1 @@
-require File.expand_path('commentable', __FILE__)
+require File.expand_path('../commentable', __FILE__)
