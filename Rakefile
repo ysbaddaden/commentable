@@ -25,7 +25,7 @@ begin
   Jeweler::Tasks.new do |gem|
     root_files = FileList["README.rdoc"]
     gem.name = "rails_commentable"
-    gem.version = "0.1.0"
+    gem.version = "0.1.1"
     gem.summary = "User comments engine for Ruby on Rails."
     gem.email = "ysbaddaden@gmail.com"
     gem.homepage = "http://github.com/ysbaddaden/commentable"
@@ -33,7 +33,7 @@ begin
     gem.authors = ['Julien Portalier']
     gem.files = root_files + FileList["{lib}/*"] + FileList["{lib}/**/*"]
     gem.extra_rdoc_files = root_files
-    gem.add_dependency 'rails', '~> 3.0.7'
+    gem.add_dependency 'rails', '>= 3.0'
   end
 
   Jeweler::GemcutterTasks.new

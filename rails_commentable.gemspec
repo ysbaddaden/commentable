@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{rails_commentable}
-  s.version = "0.1.0"
+  s.name = "rails_commentable"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Julien Portalier"]
-  s.date = %q{2011-09-17}
-  s.description = %q{User comments engine for Ruby on Rails.}
-  s.email = %q{ysbaddaden@gmail.com}
+  s.date = "2013-05-06"
+  s.description = "User comments engine for Ruby on Rails."
+  s.email = "ysbaddaden@gmail.com"
   s.files = [
     "lib/commentable.rb",
     "lib/commentable/controller.rb",
@@ -19,48 +19,21 @@ Gem::Specification.new do |s|
     "lib/commentable/routes.rb",
     "lib/rails_commentable.rb"
   ]
-  s.homepage = %q{http://github.com/ysbaddaden/commentable}
+  s.homepage = "http://github.com/ysbaddaden/commentable"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{User comments engine for Ruby on Rails.}
-  s.test_files = [
-    "test/comment_test.rb",
-    "test/comments_controller_test.rb",
-    "test/rails_app/app/controllers/application_controller.rb",
-    "test/rails_app/app/controllers/comments_controller.rb",
-    "test/rails_app/app/controllers/pages_controller.rb",
-    "test/rails_app/app/controllers/posts_controller.rb",
-    "test/rails_app/app/helpers/application_helper.rb",
-    "test/rails_app/app/models/comment.rb",
-    "test/rails_app/app/models/page.rb",
-    "test/rails_app/app/models/post.rb",
-    "test/rails_app/config/application.rb",
-    "test/rails_app/config/boot.rb",
-    "test/rails_app/config/environment.rb",
-    "test/rails_app/config/environments/development.rb",
-    "test/rails_app/config/environments/production.rb",
-    "test/rails_app/config/environments/test.rb",
-    "test/rails_app/config/initializers/secret_token.rb",
-    "test/rails_app/config/initializers/session_store.rb",
-    "test/rails_app/config/routes.rb",
-    "test/rails_app/db/migrate/20110417162758_create_comments.rb",
-    "test/rails_app/db/migrate/20110517071950_create_pages.rb",
-    "test/rails_app/db/migrate/20110517071954_create_posts.rb",
-    "test/rails_app/db/schema.rb",
-    "test/rails_app/db/seeds.rb",
-    "test/test_helper.rb"
-  ]
+  s.rubygems_version = "1.8.23"
+  s.summary = "User comments engine for Ruby on Rails."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rails>, ["~> 3.0.7"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.0"])
     else
-      s.add_dependency(%q<rails>, ["~> 3.0.7"])
+      s.add_dependency(%q<rails>, [">= 3.0"])
     end
   else
-    s.add_dependency(%q<rails>, ["~> 3.0.7"])
+    s.add_dependency(%q<rails>, [">= 3.0"])
   end
 end
 
